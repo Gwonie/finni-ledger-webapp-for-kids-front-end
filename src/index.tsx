@@ -19,7 +19,6 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
@@ -30,5 +29,4 @@ root.render(
         </Provider>
       </ThemeProvider>
     </BrowserRouter>
-  </React.StrictMode>
 );

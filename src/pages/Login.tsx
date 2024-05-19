@@ -26,7 +26,7 @@ const IntroWrapper = styled.div`
     margin-bottom: 2rem;
 `
 
-const KakaoWrapper = styled.div`
+const KakaoWrapper = styled.a`
     width: 100%;
     height: 3rem;
     padding: 0.96875rem 7.6875rem 0.90625rem 0.875rem;
@@ -70,6 +70,9 @@ const NaverWrapper = styled.div`
         white-space: nowrap;
     }
 `
+const REST_API_KEY = process.env.REACT_APP_REST_API_KEY;
+const KAKAO_REDIRECT_URI = 'http://localhost:3000/auth/kakao/callback';
+const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${KAKAO_REDIRECT_URI}&response_type=code`;
 
 export default function Login(){
     return(
@@ -78,7 +81,7 @@ export default function Login(){
                 <span>어린이 용돈 관리</span>
                 <span>3초 만에 시작하기</span>
             </IntroWrapper>
-            <KakaoWrapper>
+            <KakaoWrapper href={KAKAO_AUTH_URL}>
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clipPath="url(#clip0_840_6155)">
                 <path fillRule="evenodd" clipRule="evenodd" d="M9.00004 0.476132C4.02919 0.476132 1.8e-05 3.60553 1.8e-05 7.46512C1.8e-05 9.86547 1.55842 11.9815 3.93154 13.2401L2.93305 16.9069C2.84483 17.2309 3.21343 17.4892 3.49648 17.3014L7.87336 14.3974C8.24272 14.4333 8.61809 14.4542 9.00004 14.4542C13.9705 14.4542 17.9999 11.3249 17.9999 7.46512C17.9999 3.60553 13.9705 0.476132 9.00004 0.476132Z" fill="black"/>
