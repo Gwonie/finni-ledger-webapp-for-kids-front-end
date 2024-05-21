@@ -49,7 +49,7 @@ const KakaoWrapper = styled.a`
     margin-bottom: 0.5rem;
 `
 
-const NaverWrapper = styled.div`
+const NaverWrapper = styled.a`
     width: 100%;
     height: 3rem;
     padding: 0.96875rem 7.6875rem 0.90625rem 0.875rem;
@@ -71,8 +71,12 @@ const NaverWrapper = styled.div`
     }
 `
 const REST_API_KEY = process.env.REACT_APP_REST_API_KEY;
-const KAKAO_REDIRECT_URI = 'http://localhost:3000/auth/kakao/callback';
+const KAKAO_REDIRECT_URI = `${process.env.REACT_APP_CLIENT_IP}/auth/kakao/callback`;
 const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${KAKAO_REDIRECT_URI}&response_type=code`;
+
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+const NAVER_REDIRECT_URI = `${process.env.REACT_APP_CLIENT_IP}/auth/naver/callback`;
+const NAVER_AUTH_URL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${NAVER_REDIRECT_URI}`;
 
 export default function Login(){
     return(
@@ -94,7 +98,7 @@ export default function Login(){
                 </svg>
                 <span>카카오 로그인</span>
             </KakaoWrapper>
-            <NaverWrapper>
+            <NaverWrapper href={NAVER_AUTH_URL}>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10.8491 8.56267L4.91687 0H0V16H5.15088V7.436L11.0831 16H16V0H10.8491V8.56267Z" fill="white"/>
                 </svg>

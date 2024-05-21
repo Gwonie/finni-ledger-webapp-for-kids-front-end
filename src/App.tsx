@@ -13,7 +13,7 @@ import AllowanceInfo from 'pages/AllowanceInfo';
 import AddingCategory from 'components/allowanceInfo/AddingCategory';
 import Test from 'pages/Test';
 import SavingInfo from 'pages/SavingInfo';
-import KakaoLogin from 'pages/KakaoLogin';
+import OAuthHandler from 'pages/OAuthHandler';
 
 
 function App() {
@@ -36,7 +36,8 @@ function App() {
       </Route>
       <Route path='/guideIndex' element={<GuideIndex />} />
       <Route path='/test' element={<Test/>} />
-      <Route path='/auth/kakao/callback' element={<KakaoLogin/>} />
+      <Route path='/auth/naver/callback' element={<OAuthHandler/>} />
+      <Route path='/auth/kakao/callback' element={<OAuthHandler/>} />
     </Routes>
   );
 }
