@@ -5,11 +5,12 @@ import { saver } from "./savingInfo";
 import { persistReducer } from "redux-persist";
 // import storage from "redux-persist/lib/storage";
 import storage from "redux-persist/lib/storage/session";
+import { auth } from "./auth";
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["saver"]
+  whitelist: ["saver", "auth"]
   // blacklist -> 그것만 제외합니다
 };
 
@@ -18,6 +19,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   depositActiver,
   saver,
+  auth
 });
 
 export default persistReducer(persistConfig, rootReducer);

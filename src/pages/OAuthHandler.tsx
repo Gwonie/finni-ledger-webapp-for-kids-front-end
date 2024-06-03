@@ -2,7 +2,7 @@ import axios from "axios"
 import { useEffect } from "react"
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getUserInfo } from "reducers/userInfo";
+import { setToken } from "reducers/auth";
 
 export default function OAuthHandler(){
     const navigate = useNavigate();
@@ -26,7 +26,8 @@ export default function OAuthHandler(){
     async function login(){
         try{
             const res = await axios.get(`${process.env.REACT_APP_BACKEND_IP}${REDIRECT_URI}`, {params});
-            dispatch(getUserInfo({accessToken: res.data.access_token, userEmail: res.data.user_email}));
+            const data = res.data;
+            dispatch(setToken(data.access_token));
             navigate('/');
         } catch(err){
             console.error(err);
