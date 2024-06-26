@@ -30,7 +30,7 @@ export default function OAuthHandler(){
             dispatch(setToken(data.access_token));
             navigate('/');
         } catch(err){
-            console.error(err);
+            console.log(err);
             alert('로그인 실패');
             navigate(-1);
         }

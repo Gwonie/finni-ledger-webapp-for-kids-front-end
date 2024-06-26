@@ -1,5 +1,8 @@
+import axios from "axios"
 import Footer from "components/Footer"
-import { Link } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { Link, Navigate, useNavigate } from "react-router-dom"
+import { deleteToken } from "reducers/auth"
 import styled from "styled-components"
 
 const Wrapper = styled.div`
@@ -81,6 +84,22 @@ const profileData : {img_path: string, nick_name: string, age: number} = {
 }
 
 export default function Outline(){
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    async function handleLogout(){
+        try{
+            const res = await axios.post(`${process.env.REACT_APP_BACKEND_IP}/user/logout`);
+            console.log(res);
+            dispatch(deleteToken());
+            navigate('/');
+        } catch(err){
+            console.log(err);
+            alert('로그아웃 실패');
+            navigate(-1);
+        }
+    }
+
     return(
         <>
             <Wrapper>
@@ -117,7 +136,7 @@ export default function Outline(){
                         </svg>
                     </List>
                 </Link>
-                <LogoutBtn>
+                <LogoutBtn onClick={handleLogout}>
                     <span>로그아웃</span>
                 </LogoutBtn>
             </Wrapper>

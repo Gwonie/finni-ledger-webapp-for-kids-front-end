@@ -1,3 +1,5 @@
+import { defaultMaxListeners } from "events";
+
 export const SET = "SET_TOKEN"
 export const DELETE = "DELETE_TOKEN"
 
@@ -29,5 +31,7 @@ export const auth = (state = initalState, action: any) => {
                 accessToken: "",
                 expireTime: 0,
             }
+        default:
+            return state;
     }
 }
